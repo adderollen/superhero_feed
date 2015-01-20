@@ -1,0 +1,2 @@
+ServiceConfiguration.configurations.remove({ service: "instagram" }); 
+ServiceConfiguration.configurations.insert({ service: "instagram", clientId: "71ca540984ee43feac2eaf4e2fcfe99e", scope:'basic', secret: "bc7a3edc408446c6964f34519504a6df" });
