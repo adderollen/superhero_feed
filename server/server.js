@@ -4,3 +4,10 @@ Meteor.methods({
 		return imgs;
 	}
 })
+
+Router.route('/subscription', {where: 'server'}).get(function() {
+	this.response.end(this.request.query["hub.challenge"])
+}).post(function() {
+	//Fetch the new images
+	this.response.end("Hi")
+})
