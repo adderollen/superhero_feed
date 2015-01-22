@@ -6,7 +6,7 @@ Meteor.methods({
 	},
 
 	getNewImgs: function(token) {
-		var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/nofilter/media/recent?access_token='+token)
+		var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/chalmershero/media/recent?access_token='+token)
 		if(imgs) {
 			Imgs.insert({
 				createdAt: new Date(),
