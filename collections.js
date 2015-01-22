@@ -1,2 +1,2 @@
-AuthInformation = new Mongo.Collection('authInfos');
-InstaUpdates = new Mongo.Collection('instaUpdates')
+InstaUpdates = new Mongo.Collection('instaUpdates');
+Imgs = new Mongo.Collection('images');

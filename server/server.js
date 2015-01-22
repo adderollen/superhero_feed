@@ -1,13 +1,31 @@
 Meteor.methods({
-	getImages: function (tag, token) {
-		var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/'+tag+'/media/recent?access_token='+token)
-		return imgs;
+	clearInstaData: function() {
+		InstaUpdates.remove({});
+		Imgs.remove({});
+		return "Cleared"
+	},
+
+	getNewImgs: function(token) {
+		var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/nofilter/media/recent?access_token='+token)
+		if(imgs) {
+			Imgs.insert({
+				createdAt: new Date(),
+				img: imgs.data.data[0]
+			})
+			return true
+		}
+		else {
+			return false
+		}		
 	}
 })
 
-Router.route('/subscription', {where: 'server'}).get(function() {
+Router.onBeforeAction(Iron.Router.bodyParser.json({limit: "50mb"}), {where: 'server'})
+
+Router.route('/subscription', {where: 'server',}).get(function() {
 	this.response.end(this.request.query["hub.challenge"])
 }).post(function() {
-	//Fetch the new images
+	var body = this.request.body
+	InstaUpdates.insert({"body": body})
 	this.response.end("Hi")
 })

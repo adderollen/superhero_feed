@@ -7,12 +7,17 @@
 </body>
 
 <template name="home">
-<h1>You are logged in</h1>
+<ul>
+	{{#each imgs}}
+	{{#with img}}
+		<li><img src="{{images.standard_resolution.url}}">User: {{user.full_name}}</li>
+	{{/with}}
+	{{/each}}
+</ul>
 
-<a id="get-imgs" href="#">Get images</a>
 </template>
 
 <template name="login">
 	<a id="insta-login" href="#" class="button">Login here</a>
-
+	<a id="clear-insta-data" href="#">Clear insta data</a>
 </template>
