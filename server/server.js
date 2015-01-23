@@ -7,7 +7,7 @@ Meteor.methods({
 
 	getNewImgs: function(token) {
 		var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/chalmershero/media/recent?access_token='+token)
-		if(imgs) {
+		if(imgs && imgs.data.data.length > 0) {
 			Imgs.insert({
 				createdAt: new Date(),
 				img: imgs.data.data[0]
@@ -16,7 +16,7 @@ Meteor.methods({
 		}
 		else {
 			return false
-		}		
+		}
 	}
 })
 
