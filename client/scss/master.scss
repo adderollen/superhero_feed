@@ -1,0 +1,220 @@
+$body: Lora, Georgia, Times, serif;
+$headings: 'Playfair Display', serif;
+
+@mixin respond($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin handheld {
+  @include respond(720px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 720px) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  font: normal 18px/1.5 $body;
+  color: #000;
+  background: #fff;
+}
+
+body {
+  width: 95%;
+  margin: 1rem auto 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-weight: bold;
+  color: #000;
+}
+
+h1, h2, h3, h4 {
+  font-family: $headings;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+time {
+  font-weight: bold;
+}
+
+[role="banner"] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid;
+  border-width: 1px 0;
+  padding: .5rem 1%;
+
+  :last-child {
+    text-align: right;
+  }
+
+  h1 {
+    line-height: 1;
+    flex: 1;
+    text-align: center;
+  }
+
+  @include handheld {
+    flex-wrap: wrap;
+
+    p {
+      font-size: .7rem;
+      order: 3;
+    }
+
+    h1 {
+      order: 1;
+      font-size: 15vw;
+      flex-basis: 100%;
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: .4em 1.5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    background: #000;
+    color: #fff;
+  }
+}
+
+
+.login {
+  max-width: 40rem;
+  text-align: center;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+
+  h1 {
+    margin-bottom: 2rem;
+    font-size: 14vw;
+  }
+}
+
+[role="main"] {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feed {
+
+  @include large {
+    order: 2;
+    flex: 3;
+    padding: 0 3%;
+  }
+
+  img {
+    border-radius: 5px;
+  }
+
+  li {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid;
+  }
+
+  .description {
+    margin: 2rem 0;
+    font-size: 1.1em;
+  }
+
+  .avatar {
+    width: 64px;
+    display: inline;
+    vertical-align: middle;
+    margin-right: .5rem;
+
+    @include handheld {
+      float: left;
+    }
+  }
+
+  time {
+    font-weight: normal;
+    font-style: italic;
+    font-size: .9em;
+    margin-left: .5rem;
+
+    @include handheld {
+      white-space: nowrap;
+      margin-left: 0;
+    }
+  }
+}
+
+.icon {
+  width: .8em;
+  height: .8em;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.column {
+  flex: 1;
+  font-size: .9rem;
+
+  h2 {
+    font-size: 1.3em;
+  }
+
+  p {
+    text-indent: 1em;
+  }
+
+  &:nth-child(2) {
+    order: 1;
+  }
+
+  &:last-child {
+    order: 3;
+  }
+
+  @include handheld {
+    display: none;
+  }
+}

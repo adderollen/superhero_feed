@@ -11,3 +11,4 @@ bozhao:accounts-instagram
 service-configuration
 iron:router
 fourseven:scss@=2.0.0-beta_1
+mrt:moment

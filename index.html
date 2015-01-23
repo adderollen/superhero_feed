@@ -1,0 +1,90 @@
+<head>
+  <title>Svarta Mamban &amp; SuperNollans Superhero Feed</title>
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,900,400italic|Lora:400,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+</body>
+
+<template name="home">
+  <header role="banner">
+    <p class="date">
+      <time>{{formatDate date 'MMMM Do, YYYY'}}</time><br />
+      Førsta upplagan.
+    </p>
+
+    <h1>MambaNews</h1>
+
+    <p>
+      <strong>Chalmers tekniska lekskola.</strong><br />
+      Utgiven sedan 1990.
+    </p>
+  </header>
+
+  <main role="main">
+
+    <ol class="feed">
+    	{{#each imgs}}
+        {{#with img}}
+        	{{ > image }}
+        {{/with}}
+    	{{/each}}
+    </ol>
+
+    <section class="column">
+      <h2>SuperNollan slår till igen!</h2>
+      {{ > placeholder}}
+      {{ > placeholder}}
+    </section>
+
+    <section class="column">
+      <h2>Svart Mamba siktad</h2>
+      {{ > placeholder}}
+      {{ > placeholder}}
+    </section>
+
+  </main>
+
+</template>
+
+<template name="image">
+  <li>
+    <figure>
+      <img src="{{images.standard_resolution.url}}">
+    </figure>
+
+    {{#if caption.text}}
+    <p class="description">
+      {{caption.text}}
+    </p>
+    {{/if}}
+    <p>
+      <img class="avatar" src="{{user.profile_picture}}">
+      by <strong>{{user.full_name}}</strong> <time>{{timeAgo}}</time>
+    </p>
+  </li>
+</template>
+
+<template name="login">
+  <section class="login">
+
+    <h1>MambaNews</h1>
+
+    <a id="insta-login" href="#" class="btn">Login with Instagram</a>
+  </section>
+</template>
+
+<template name="admin">
+  <a id="clear-insta-data" class="btn" href="#">Clear insta data</a>
+</template>
+
+<template name="placeholder">
+  <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment.</p>
+
+  <p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me? " he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+
+  <p>It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad. "How about if I sleep a little bit longer and forget all this nonsense", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was. He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when</p>
+</template>

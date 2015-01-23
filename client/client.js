@@ -20,10 +20,10 @@ Router.onBeforeAction(function() {
 	if(!Session.get('currentToken')) {
 		this.render('login')
 	} else {
-		var token = Session.get('currentToken');
 		this.next()
 	}
 }, { except: ['callback'] })
+
 
 Router.route('/callback', function() {
 	var hash = this.params.hash;
@@ -38,26 +38,69 @@ Router.route('/', function() {
 	this.render('home')
 })
 
-
+Router.route('/johanpwns', function() {
+	this.render('admin')
+})
 
 
 Template.login.events({
 	'click a#insta-login': function(evt, template) {
 		if(!Session.get('currentToken')) {
 			window.location = auth_url + Helpers.toQueryString(data)
-		}		
-	},
+		}
+	}
+})
 
+Template.admin.events({
 	'click a#clear-insta-data': function(evt, template) {
 		Meteor.call('clearInstaData', function(err, res) {
-			
+			if(!err) {
+				console.log('Cleared data!')
+			}
+			else {
+				console.error(err.reason)
+			}
 		})
 	}
 })
 
+Template.registerHelper('formatDate', function(date, format) {
+	return moment(date).format(format)
+})
+
+var mock = {
+	img: {
+		created_time: new Date().valueOf(),
+		images: {
+			standard_resolution: {
+				url: 'http://placekitten.com/g/600/600'
+			}
+		},
+		user: {
+			full_name: 'Johan Brook',
+			profile_picture: 'http://placekitten.com/g/64/64'
+		},
+		caption: {
+			text: 'Lorem ipsum dorelt istamet oawjd awdoaid awjdi.'
+		},
+		likes: {
+			count: 10
+		}
+	}
+}
+
 Template.home.helpers({
 	imgs: function() {
 		return Imgs.find({}, {sort: {createdAt: -1}});
+	},
+	date: function() {
+		return moment()
+	}
+})
+
+Template.image.helpers({
+	timeAgo: function() {
+		return moment(this.created_time).fromNow()
 	}
 })
 
