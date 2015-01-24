@@ -155,6 +155,15 @@ time {
   justify-content: space-between;
 }
 
+[role="contentinfo"] {
+  margin-top: 1rem;
+  border-top: 2px solid;
+  padding: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .tracking {
   font-size: .8rem;
   text-transform: uppercase;
