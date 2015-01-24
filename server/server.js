@@ -35,9 +35,15 @@ Meteor.methods({
 					})
 
 			if(imgs && imgs.data.data.length > 0) {
+				var img = imgs.data.data[0]
+
+				if(Imgs.findOne({ 'img.id': img.id })) {
+					throw new Meteor.Error(403, 'Image already exists')
+				}
+
 				return Imgs.insert({
 					createdAt: new Date(),
-					img: imgs.data.data[0]
+					img: img
 				})
 			}
 			else {
