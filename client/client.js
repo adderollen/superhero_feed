@@ -22,7 +22,7 @@ Router.onBeforeAction(function() {
 	} else {
 		this.next()
 	}
-}, { except: ['callback'] })
+}, { except: ['callback', 'johanpwns'] })
 
 
 Router.route('/callback', function() {
