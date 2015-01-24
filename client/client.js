@@ -97,7 +97,7 @@ Template.admin.events({
 		})
 	},
 
-	'click a#clear-insta-data': function(evt, template) {
+	'click #clear-insta-data': function(evt, template) {
 		Meteor.call('clearInstaData', function(err, res) {
 			if(!err) {
 				console.log('Cleared data!')
