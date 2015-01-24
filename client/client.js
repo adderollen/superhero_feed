@@ -17,8 +17,7 @@ var data = {
 //https://api.instagram.com/v1/subscriptions?client_secret=CLIENT-SECRET&client_id=CLIENT-ID
 
 Router.onBeforeAction(function() {
-	// if(!Session.get('currentToken')) {
-	if(false){
+	if(!Session.get('currentToken')) {
 		this.render('login')
 	} else {
 		this.next()
