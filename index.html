@@ -16,7 +16,7 @@
       Førsta upplagan.
     </p>
 
-    <h1>MambaNews</h1>
+    <h1>{{ > icon 'instagram'}} MambaNews</h1>
 
     <p>
       <strong>Chalmers tekniska lekskola.</strong><br />
@@ -27,11 +27,18 @@
   <main role="main">
 
     <ol class="feed">
-    	{{#each imgs}}
-        {{#with img}}
-        	{{ > image }}
-        {{/with}}
-    	{{/each}}
+      {{#if imgs.count}}
+      	{{#each imgs}}
+          {{#with img}}
+          	{{ > image }}
+          {{/with}}
+      	{{/each}}
+      {{else}}
+      <li class="no-content">
+        <h2>Bad News</h2>
+        <p>No superhero poses yet.</p>
+      </li>
+      {{/if}}
     </ol>
 
     <section class="column">

@@ -17,7 +17,8 @@ var data = {
 //https://api.instagram.com/v1/subscriptions?client_secret=CLIENT-SECRET&client_id=CLIENT-ID
 
 Router.onBeforeAction(function() {
-	if(!Session.get('currentToken')) {
+	// if(!Session.get('currentToken')) {
+	if(false){
 		this.render('login')
 	} else {
 		this.next()
@@ -108,6 +109,11 @@ Template.home.rendered = function(){
 	Tracker.autorun(function() {
 		var x = InstaUpdates.find().fetch();
 		Meteor.call('getNewImgs', Session.get('currentToken'),function(err, res) {
+			if(err) {
+				if(err.error === 403) {
+					console.warn('No access token provided. You need to auth first, noob.')
+				}
+			}
 		})
 	})
 }

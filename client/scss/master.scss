@@ -79,14 +79,30 @@ time {
     text-align: right;
   }
 
+  p {
+    font-size: .9em;
+  }
+
   h1 {
     line-height: 1;
-    flex: 1;
     text-align: center;
+  }
+
+  @include large {
+    h1 {
+      flex: 3;
+    }
+    p {
+      flex: 1;
+    }
   }
 
   @include handheld {
     flex-wrap: wrap;
+
+    .icon {
+      display: none;
+    }
 
     p {
       font-size: .7rem;
@@ -147,6 +163,34 @@ time {
     padding: 0 3%;
   }
 
+  @include handheld {
+    width: 100%;
+  }
+
+  .no-content {
+    text-align: center;
+    color: #fff;
+    background: #000;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.2rem;
+    border-radius: 3px;
+
+    h2 {
+      font-size: 2.5em;
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      font-style: italic;
+    }
+  }
+
   img {
     border-radius: 5px;
   }
@@ -190,7 +234,6 @@ time {
   width: .8em;
   height: .8em;
   fill: currentColor;
-  vertical-align: middle;
 }
 
 .column {
@@ -203,6 +246,10 @@ time {
 
   p {
     text-indent: 1em;
+
+    &:first-of-type {
+      text-indent: 0;
+    }
   }
 
   &:nth-child(2) {
