@@ -30,9 +30,7 @@ Meteor.methods({
 
 		try {
 			var tag = Tags.findOne(),
-					imgs = Meteor.http.get(apiURLForTag(tag), {
-						params: { access_token: token }
-					})
+					imgs = Meteor.http.get(apiURLForTag(tag) + '?access_token='+token)
 
 			if(imgs && imgs.data.data.length > 0) {
 				return Imgs.insert({
