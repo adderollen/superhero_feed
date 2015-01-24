@@ -51,19 +51,6 @@ Template.login.events({
 	}
 })
 
-Template.admin.events({
-	'click a#clear-insta-data': function(evt, template) {
-		Meteor.call('clearInstaData', function(err, res) {
-			if(!err) {
-				console.log('Cleared data!')
-			}
-			else {
-				console.error(err.reason)
-			}
-		})
-	}
-})
-
 Template.registerHelper('formatDate', function(date, format) {
 	return moment(date).format(format)
 })
@@ -107,6 +94,17 @@ Template.admin.events({
 			if(err) return console.error(err)
 
 			console.log('Set new tag to '+val)
+		})
+	},
+
+	'click a#clear-insta-data': function(evt, template) {
+		Meteor.call('clearInstaData', function(err, res) {
+			if(!err) {
+				console.log('Cleared data!')
+			}
+			else {
+				console.error(err.reason)
+			}
 		})
 	}
 })
