@@ -34,6 +34,7 @@ html {
 body {
   width: 95%;
   margin: 1rem auto 0;
+  max-width: 70rem;
 }
 
 img {
@@ -70,7 +71,6 @@ time {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: .5rem;
   border: 1px solid;
   border-width: 1px 0;
   padding: .5rem 1%;
@@ -165,14 +165,14 @@ time {
 }
 
 .tracking {
-  font-size: 1.5rem;
-  text-transform: uppercase;
+  font-size: 1.4rem;
   text-align: center;
-  padding-bottom: .5rem;
+  padding: 1.5rem 0;
   letter-spacing: 1px;
 }
 
 .feed {
+  max-width: 640px;
 
   @include large {
     order: 2;

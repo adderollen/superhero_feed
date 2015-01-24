@@ -60,7 +60,7 @@ var mock = {
 		created_time: new Date().valueOf(),
 		images: {
 			standard_resolution: {
-				url: 'http://placekitten.com/g/600/600'
+				url: 'http://placekitten.com/g/640/640'
 			}
 		},
 		user: {

@@ -1,7 +1,7 @@
 var TAG = 'chalmershero'
 
 var apiURLForTag = function(tag) {
-	return 'https://api.instagram.com/v1/tags/'+tag+'/media/recent'
+	return 'https://api.instagram.com/v1/tags/'+tag.name+'/media/recent'
 }
 
 Meteor.startup(function() {
@@ -35,9 +35,15 @@ Meteor.methods({
 					})
 
 			if(imgs && imgs.data.data.length > 0) {
+				var img = imgs.data.data[0]
+
+				if(Imgs.findOne({ 'img.id': img.id })) {
+					throw new Meteor.Error(403, 'Image already exists')
+				}
+
 				return Imgs.insert({
 					createdAt: new Date(),
-					img: imgs.data.data[0]
+					img: img
 				})
 			}
 			else {
