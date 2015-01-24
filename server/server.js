@@ -1,3 +1,5 @@
+var TAG = 'chalmershero'
+
 Meteor.methods({
 	clearInstaData: function() {
 		InstaUpdates.remove({});
@@ -7,7 +9,7 @@ Meteor.methods({
 
 	getNewImgs: function(token) {
 		try {
-			var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/chalmershero/media/recent?access_token='+token)
+			var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/'+TAG+'/media/recent?access_token='+token)
 
 			if(imgs && imgs.data.data.length > 0) {
 				Imgs.insert({
