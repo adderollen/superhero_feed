@@ -1,6 +1,23 @@
 var TAG = 'chalmershero'
 
+var apiURLForTag = function(tag) {
+	return 'https://api.instagram.com/v1/tags/'+tag+'/media/recent'
+}
+
+Meteor.startup(function() {
+	if(Tags.find().count() === 0) {
+		Tags.insert({name: TAG})
+	}
+})
+
 Meteor.methods({
+
+	trackNewTag: function(tag) {
+		check(tag, String)
+		Tags.remove({})
+		return Tags.insert({ name: tag })
+	},
+
 	clearInstaData: function() {
 		InstaUpdates.remove({});
 		Imgs.remove({});
@@ -8,16 +25,20 @@ Meteor.methods({
 	},
 
 	getNewImgs: function(token) {
+		check(token, String)
+		this.unblock()
+
 		try {
-			var imgs = Meteor.http.call('GET', 'https://api.instagram.com/v1/tags/'+TAG+'/media/recent?access_token='+token)
+			var tag = Tags.findOne(),
+					imgs = Meteor.http.get(apiURLForTag(tag), {
+						params: { access_token: token }
+					})
 
 			if(imgs && imgs.data.data.length > 0) {
-				Imgs.insert({
+				return Imgs.insert({
 					createdAt: new Date(),
 					img: imgs.data.data[0]
 				})
-
-				return true
 			}
 			else {
 				return false

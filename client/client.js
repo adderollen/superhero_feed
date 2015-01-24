@@ -89,12 +89,37 @@ var mock = {
 	}
 }
 
+Template.admin.helpers({
+	tag: function() {
+		return Tags.findOne()
+	}
+})
+
+Template.admin.events({
+	'submit #new-tag-form': function(evt, tmpl) {
+		evt.preventDefault()
+
+		var val = tmpl.find('#tag').value
+
+		if(!val) return console.warn('You must fill in a tag!')
+
+		Meteor.call('trackNewTag', val, function(err, res) {
+			if(err) return console.error(err)
+
+			console.log('Set new tag to '+val)
+		})
+	}
+})
+
 Template.home.helpers({
 	imgs: function() {
 		return Imgs.find({}, {sort: {createdAt: -1}});
 	},
 	date: function() {
 		return moment()
+	},
+	tag: function() {
+		return Tags.findOne()
 	}
 })
 

@@ -24,6 +24,12 @@
     </p>
   </header>
 
+  <aside class="tracking">
+    <p>
+      Tracking the <strong>#{{tag.name}}</strong> tag.
+    </p>
+  </aside>
+
   <main role="main">
 
     <ol class="feed">
@@ -85,7 +91,20 @@
 </template>
 
 <template name="admin">
-  <a id="clear-insta-data" class="btn" href="#">Clear insta data</a>
+  <p>
+    <a href="/">Back</a>
+  </p>
+
+  <p><button id="clear-insta-data" class="btn">Clear insta data</button></p>
+
+  <form id="new-tag-form">
+    <p>
+      <input type="text" id="tag" placeholder="chalmerssuperhero" value="{{tag.name}}">
+    </p>
+    <p>
+      <input class="btn" type="submit" value="Set new">
+    </p>
+  </form>
 </template>
 
 <template name="placeholder1">

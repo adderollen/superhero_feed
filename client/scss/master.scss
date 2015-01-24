@@ -70,7 +70,7 @@ time {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   border: 1px solid;
   border-width: 1px 0;
   padding: .5rem 1%;
@@ -153,6 +153,14 @@ time {
 [role="main"] {
   display: flex;
   justify-content: space-between;
+}
+
+.tracking {
+  font-size: .8rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: .5rem;
+  letter-spacing: 1px;
 }
 
 .feed {
